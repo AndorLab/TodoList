@@ -24,3 +24,4 @@
 |4|React 17|React fire新特性及其应用|||||
 |5|正则表达式|使用正则的骚姿势|[易海门](https://github.com/haihaio)|暂定|否|-|
 |6||| [王志强](https://github.com/MisterAlexHunt) || 否 ||
+|7|RESTful API规范||[王海亮](https://github.com/mozi01)|2018-10-31(暂定)|否|-|
