@@ -23,4 +23,4 @@
 |3|PWA||[负责人]()||否||
 |4|React 17|React fire新特性及其应用|||||
 |5|正则表达式|使用正则的骚姿势|[易海门](https://github.com/haihaio)|暂定|否|-|
-|6| String | String对象常用的属性和方法回顾 | [王志强](https://github.com/MisterAlexHunt) | 2018-10-24 17:00 | 否 ||
+|6||| [王志强](https://github.com/MisterAlexHunt) || 否 ||
