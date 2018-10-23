@@ -20,7 +20,7 @@
 |序号|话题|简介|负责人|日期|完成|资源|
 |:--:|:--|:--|:--:|--:|:--|--:|
 |1|Web Url、TCP/IP、优化|从输入URL到页面渲染发生了什么  主要内容：（1）DNS解析 （2）TCP/IP的三次握手和和四次挥手 （3）Web优化 |吴叶芝|2018-10-17|是||
-|2|Jest-React测试实践||[谷中仁](https://github.com/guzhongren),[易海门](https://github.com/haihaio)|暂定|否|合作|
+|2|自动化测试Jest及其在框架中的应用|简述自动化测试框架Jest、优缺点等，并在SummitWeb中的实践|[谷中仁](https://github.com/guzhongren)|2018-10-24|否||
 |3|PWA||[负责人]()||否||
 |4|React 17|React fire新特性及其应用|||||
 |5|正则表达式|使用正则的骚姿势|[易海门](https://github.com/haihaio)|暂定|否|-|
@@ -29,3 +29,4 @@
 |8|函数式编程之道||||否|-|
 |9|React虚拟dom设计的哲学||||否|-|
 |10|storybook|不用写两份文档来展示你的组件库|||否|-|
+|11|Enzyme|自动化测试你的React组件库|||否|-|
