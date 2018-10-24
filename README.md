@@ -25,7 +25,7 @@
 |4|React 17|React fire新特性及其应用|||||
 |5|正则表达式|使用正则的骚姿势|[易海门](https://github.com/haihaio)|暂定|否|-|
 |6||| [王志强](https://github.com/MisterAlexHunt) || 否 ||
-|7|RESTful API规范||[王海亮](https://github.com/mozi01)|2018-10-31(暂定)|否|-|
+|7|javascript原型和闭包的理解||[王海亮](https://github.com/mozi01)|暂定|否|-|
 |8|函数式编程之道||||否|-|
 |9|React虚拟dom设计的哲学||||否|-|
 |10|storybook|不用写两份文档来展示你的组件库|||否|-|
