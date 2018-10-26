@@ -31,3 +31,4 @@
 |10|storybook|不用写两份文档来展示你的组件库|||否|-|
 |11|Enzyme|自动化测试你的React组件库|||否|-|
 |12|ES6/ES7/ES8新语法特性|主要ES6新语法，额外附加些许ES7和ES8|[易海门](https://github.com/haihaio)|暂定|否|-|
+|13|项目实战之数组高级函数的使用|减少使用for中嵌套if，多使用高级函数|[易海门](https://github.com/haihaio)|10月10日|是|-|
