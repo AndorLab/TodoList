@@ -24,7 +24,7 @@
 |3|PWA||[负责人]()||否||
 |4|React 17|React fire新特性及其应用|||||
 |5|正则表达式|使用正则的骚姿势|[易海门](https://github.com/haihaio)|暂定|否|-|
-|6||| [王志强](https://github.com/MisterAlexHunt) || 否 ||
+|6|页面渲染提升性能的方式详解|提升性能的方式随口就有好几条，那么他们到底是如何提升的呢| [王志强](https://github.com/MisterAlexHunt) || 否 ||
 |7|javascript原型和闭包的理解||[王海亮](https://github.com/mozi01)|暂定|否|-|
 |8|函数式编程之道||||否|-|
 |9|React虚拟dom设计的哲学||||否|-|
