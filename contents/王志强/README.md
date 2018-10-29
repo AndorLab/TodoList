@@ -177,8 +177,65 @@
   而现代浏览器不会等待CSS树（所有CSS文件下载和解析完成）和DOM树（整个身体标签解析完成）构建完成才开始绘  制，而是马上开始显示中间结果
   所以经常在低网速的环境中，观察到页面由上至下缓慢显示完，或者先显示文本内容后再重绘成带有格式的页面内容
 
+#### CSS 阻塞渲染
+
+  > CSSOM形成前，**浏览器不会渲染任何已处理内容**，所以CSS被视为阻塞渲染的资源
+
+  那么说明
+
+  1. css加载不会阻塞DOM树的解析 
+  2. css加载会阻塞DOM树的渲染 
+  3. css加载会阻塞后面js语句的执行
+
+解决CSS阻塞的问题的几个方向：
+
+  * 网速
+  * 大小
+  * 尽早并行下载
+  * 尽早开始构建CSSOM
+  * 构建CSSOM的速度
+
+解决方案
+  
+  1. 媒体查询 
+
+  虽然媒体查询也下载全部CSS代码，但是只会解析符合媒体查询条件的代码，这就做到了尽量少的阻塞渲染。
+
+  2. preload
+  
+  ``` html
+  <link rel="preload" href="index_print.css" as="style" onload="this.rel='stylesheet'">
+``` 
+ preload是resoure hint规范中定义的一个功能，也就是预加载，将rel改为preload后，相当于加了一个标志位，浏览器解析的时候会提前建立连接或加载资源，做到尽早并行下载，然后在onload事件响应后将link的rel属性改为stylesheet即可进行解析
+ 
+  > Resource Hint实际上就是“合法化”的提供了使用浏览器原始语言来进行的一些提前预测行为的能力，W3C也陆续增加了很多功能，preload只是其中的之一
+
+  3. 动态添加link
+  
+  ``` js
+  var style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = 'index.css';
+  document.head.appendChild(style);
+```
+  js动态添加DOM元素link，不会阻塞渲染
+
+  loadCSS.js，CSS preload polyfill第三方库，用的就是这个原理
+
+  4. 将CSS放在head
+
+  > 将CSS放在head，不管内部样式表还是外部央视白哦都会尽早开始下载或者构建CSSOM
+
+  5. 避免使用CSS import
+  
+  > 在CSS中可以用import将另一个样式表引入，不过这样显然在构建CSSOM时会增加一次网络来回时间
+
+  6. 适度内联CSS
+
+  > 衡量其他因素，比如外联网络来回影响多大，HTML的大小，CSS的大小
+
 #### 如果渲染过程中遇到了js代码
   
    不同于css文件，js是阻塞式的加载，当浏览器在执行js代码时，不会做其他的事情。只有js代码执行后，才会继续渲染页面。
 
-  *** 由此看来，最好把js放到页面的底部***
+  ***由此看来，最好把js放到页面的底部***
