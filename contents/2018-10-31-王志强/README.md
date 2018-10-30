@@ -5,7 +5,7 @@
 
   > Document Object Model
 
- ![04](/contents/wangzq/img/04.png)
+ ![04](img/04.png)
 
   上图展示了从html的字节码被浏览器处理为DOM的过程
 
@@ -25,25 +25,25 @@
 
   > CSS Object Model
 
-  ![07](/contents/wangzq/img/07.png)
+  ![07](img/07.png)
  
    *上图是CSSOM构建流程图，跟DOM构建差不多的套路，将CSS文件的字节码转换为符合浏览器特定规则的字符，然后浏览器对其进行解析和构成树*
 
   *与 DOM有所不同的是，其整个的计算过程略有复杂，包括一套复杂的特异度计算规则（CSS属性来源 -> 特异度大小 -> 书写顺序前后覆盖），最终确定每个节点的样式值形成下图的不完整 CSSOM*
   
-  ![08](/contents/wangzq/img/08.png)
+  ![08](img/08.png)
 
   上面的CSSOM（CSS对象模型）决定了页面的五彩斑斓
 
 * Render Tree: 浏览器的Render过程将DomTree和CSSOM组合到一起，生成RenderTree;如下图
  
-   ![06](/contents/wangzq/img/06.png)
+   ![06](img/06.png)
 
   > 一般情况下，对于每一个节点，会有一个block与之对应，占用一个矩形框，并且矩形框可以嵌套；当首先检测到html元素的时候，浏览器认为该节点是根节点，会将其作为ViewPort，也就是页面的最初包含的block
 
   > 但是对于不可见的元素不会在Render Tree中出现；比如 header 标签；还有diplay等于none的元素
 
-  ![02](/contents/wangzq/img/02.png)
+  ![02](img/02.png)
 
   > 注意：visibility等于hidden的元素是会显示在Render Tree里的;因为这种使用隐藏方式的标签还是在文档流里的
 
@@ -65,7 +65,7 @@
 
 #### 下图是页面渲染的基本流程
   
-  ![01](/contents/wangzq/img/01.png)
+  ![01](img/01.png)
 
 1. 渲染引擎开始解析html文档，根据标签构建DOM节点
 
@@ -90,11 +90,11 @@
 
   根据上述步骤的解释再来看下面 Webkit 内核的流程图
 
-  ![03](/contents/wangzq/img/03.png)
+  ![03](img/03.png)
 
    接着是 Gecko 内核术语略有不同，但整体流程是基本相同的流程图
 
-  ![04](/contents/wangzq/img/05.jpg)
+  ![04](img/05.jpg)
 
   PS.DOM、CSSOM、Render Tree都可能在第一次Painting后又被更新多次
   > JS修改了DOM或者CSS属性。
