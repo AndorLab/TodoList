@@ -1,11 +1,13 @@
 ### 服务器端响应http请求，浏览器得到html代码，渲染引擎通过请求文档的内容来进行渲染；
 
 ####  先解释几个概念
-  * DOM Tree：浏览器将HTML解析成树形的数据结构
+  * DOM Tree：指通过DOM将HTML页面进行解析，并生成的HTML tree树状结构和对应访问方法
 
-  > Document Object Model
+  > DOM: Document Object Model, 文档对象模型的简称
 
- ![04](img/04.png)
+  > 借助DOM Tree，我们能直接而且简易的操作HTML页面上的每个标记内容
+
+![04](img/04.png)
 
   上图展示了从html的字节码被浏览器处理为DOM的过程
 
@@ -43,7 +45,7 @@
 
   > 但是对于不可见的元素不会在Render Tree中出现；比如 header 标签；还有diplay等于none的元素
 
-  ![02](img/02.png)
+ ![02](img/02.png)
 
   > 注意：visibility等于hidden的元素是会显示在Render Tree里的;因为这种使用隐藏方式的标签还是在文档流里的
 
@@ -61,11 +63,11 @@
   >>节点确定自己的宽度和高度
   >>父节点根据所有的子节点高度计算自己的高度
 
-  * painting: 按照算出来的规则，通过调用操作系统Native GUI的API绘制，把内容画到屏幕上。
+  * painting: 按照算出来的规则，将Layout生成的区域填充为最终将显示在屏幕上的像素，把内容画到屏幕上。
 
 #### 下图是页面渲染的基本流程
-  
-  ![01](img/01.png)
+
+![01](img/01.png)
 
 1. 渲染引擎开始解析html文档，根据标签构建DOM节点
 
@@ -77,7 +79,7 @@
 
 3. 根据css样式绘制的渲染树，确定各个元素要显示的具体位置
 
-  > renderTree构建完毕之后，不过浏览器渲染引擎并不直接使用渲染树进行绘制，为了方便处理定位（裁剪），溢出滚动（页内滚动），CSS转换/不透明/动画/滤镜，蒙版或反射，Z （Z排序）等，浏览器需要生成另外一棵树 - 层树。因此绘制过程如下： 
+  > renderTree构建完毕之后，浏览器渲染引擎并不直接使用渲染树进行绘制，为了方便处理定位（裁剪），溢出滚动（页内滚动），CSS转换/不透明/动画/滤镜，蒙版或反射，Z （Z排序）等，浏览器需要生成另外一棵树 - 层树。因此绘制过程如下： 
   >> 获取 DOM 并将其分割为多个层(RenderLayer) 
   >> 将每个层栅格化，并独立的绘制进位图中 
   >> 将这些位图作为纹理上传至 GPU 
@@ -92,9 +94,9 @@
 
   ![03](img/03.png)
 
-   接着是 Gecko 内核术语略有不同，但整体流程是基本相同的流程图
+   接着是 Gecko 内核的术语略有不同，但整体流程是基本相同的流程图
 
-  ![04](img/05.jpg)
+  ![05](img/05.jpg)
 
   PS.DOM、CSSOM、Render Tree都可能在第一次Painting后又被更新多次
   > JS修改了DOM或者CSS属性。
@@ -127,7 +129,7 @@
     2. 当运行一段通过Jjavascript  操作元素代码的时候，浏览器会将一些修改缓存起来，然后当代码执行的时候，一次性的将这些修改执行。
   举例来说，下面这段代码会触发一次重绘和一次重排：
   
-  ```js
+  ``` js
   var bstyle = document.body.style; // cache
   bstyle.padding = "20px"; // reflow, repaint
   bstyle.border = "10px solid red"; //  再一次的 reflow 和 repaint
@@ -142,7 +144,7 @@
 
   *一般来说，浏览器会把这样的（都是设置style属性，而不涉及其他类似读取属性的操作）操作积攒一批，然后做一次reflow，这又叫****异步reflow****或****增量异步reflow****。
   
-  *是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。对于这些操作，浏览器会马上进行reflow*
+  *但是有些情况浏览器是不会这么做的，比如：调整浏览器窗口的大小，改变了页面默认的字体等。对于这些操作，浏览器会马上进行reflow*
 
   *但是有些时候，我们的js脚本会阻止浏览器这么干。比如：如果我们请求下面的一些DOM值：（比如我们在上面的例子中若加一个读取属性的操作则会引起又一次的重排*
  * offsetTop, offsetLeft, offsetWidth, offsetHeight
@@ -155,7 +157,42 @@
 
   *因为，如果我们的程序需要这些值，那么浏览器需要返回最新的值，而这样一样会flush出去一些样式的改变，从而造成频繁的reflow/repaint。*
 
-#### 除此之外还有
+  **减少reflow和replaint的方法**
+  
+    * 创建合法的 HTML 和 CSS ，别忘了制定文件编码，Style 应该写在 head 标签中，script 标签应该加载 body 标签结束的位置 
+
+    * 试着简化和优化 CSS 选择器（这个优化点被大多数使用 CSS 预处理器的开发者忽略了）。将嵌套层数控制在最小
+
+    * 不要一条一条地修改DOM的样式。与其这样，还不如预先定义好css的class，然后修改DOM的classNam
+
+    * 尽可能的只对 position 为 absolute 或 fix 的元素做动画
+
+    * 当滚动时禁用一些复杂的 :hover 动画是一个很好的主意（例如，给 body 标签加一个 no-hover 的 class)
+
+    * 千万不要使用table布局。因为可能很小的一个小改动会造成整个table的重新布局
+
+    * 在你的脚本中，尽可能的减少 DOM 的操作。把所有东西都缓存起来，包括属性和对象（如果它可被重复使用）。进行复杂的操作的时候，最好操作一个“离线”的元素（“离线”元素的意思是与 DOM 对象分开、仅存在内存中的元素），然后将这个元素插入到 DOM 中
+    例如：
+ 
+        1. 使用documentFragment 对象在内存里操作DOM，类似以下的代码示例：
+        ``` js
+// Create the fragment
+var fragment = document.createDocumentFragment();
+//add DOM to fragment
+for(var i = 0; i < 10; i++) {
+    var spanNode = document.createElement("span");
+    spanNode.innerHTML = "number:" + i;
+    fragment.appendChild(spanNode);
+}
+//add this DOM to body
+document.body.appendChild(spanNode);
+        ```
+        
+        2. 先把DOM给display:none(有一次reflow)，然后你想怎么改就怎么改。比如修改100次，然后再把他显示出来
+
+        3. clone一个DOM结点到内存里，然后想怎么改就怎么改，改完后，和在线的那个的交换一下
+
+#### 还有几个概念解释一下
 
   1. onload事件
 
@@ -181,7 +218,7 @@
 
   > CSSOM形成前，**浏览器不会渲染任何已处理内容**，所以CSS被视为阻塞渲染的资源
 
-  那么说明
+ css 加载的影响
 
   1. css加载不会阻塞DOM树的解析 
   2. css加载会阻塞DOM树的渲染 
@@ -195,7 +232,7 @@
   * 尽早开始构建CSSOM
   * 构建CSSOM的速度
 
-解决方案
+CSS阻塞的解决方案
   
   1. 媒体查询 
 
@@ -212,7 +249,7 @@
 
   3. 动态添加link
   
-  ``` js
+  ``` 
   var style = document.createElement('link');
   style.rel = 'stylesheet';
   style.href = 'index.css';
@@ -230,6 +267,18 @@
   
   > 在CSS中可以用import将另一个样式表引入，不过这样显然在构建CSSOM时会增加一次网络来回时间
 
+    @import 和 link 的区别
+    
+    1.  link属于HTML标签，而@import完全是CSS提供的一种方式。
+
+       > link标签除了可以加载CSS外，还可以做很多其它的事情，比如定义RSS，定义rel连接属性等，@import就只能加载CSS了
+    2. 加载顺序的差别
+
+      > 当一个页面被加载的时候，link引用的CSS会同时被加载，而@import引用的CSS会等到页面全部被下载完再被加载。所以有时候浏览@import加载CSS的页面时开始会没有样式，网速慢的时候页面会闪烁
+
+    3. 兼容性的差别
+      > 由于@import是CSS2.1提出的所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题
+  
   6. 适度内联CSS
 
   > 衡量其他因素，比如外联网络来回影响多大，HTML的大小，CSS的大小
@@ -238,4 +287,4 @@
   
    不同于css文件，js是阻塞式的加载，当浏览器在执行js代码时，不会做其他的事情。只有js代码执行后，才会继续渲染页面。
 
-  ***由此看来，最好把js放到页面的底部***
+  *** 由此看来，最好把js放到页面的底部***
