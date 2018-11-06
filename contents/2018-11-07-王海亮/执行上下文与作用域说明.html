@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+
+/** 案例1 
+//console.log(a);
+
+console.log(b);
+var b;
+
+console.log(c);
+var c = 10;
+
+console.log(this);
+
+console.log(f1);
+function f1(){};
+
+console.log(f2);
+var f2 = function() {};
+
+function fn(x) {
+	console.log(x+5);
+}
+var fn = new Function("x", "console.log(x + 5)"); **/
+
+/** 案例2：函数代码段中，除了全局代码段中的数据外，还会有arguments变量和参数都已被赋值。
+function fn(x) {
+	console.log(arguments);
+	console.log(x);
+}
+fn(10);**/
+
+/** 案例3：javascript中的this取值的几种情况  
+// 情况1，构造函数中的this,代表它即将new出来的对象 
+function Foo() {
+	this.name = '王海亮';
+	this.year = 2018;
+	
+	console.log(this);
+}
+
+var f1 = new Foo();
+
+// 情况2，函数作为对象的一个属性被对象调用时，函数中的this指向该对象 
+var obj = {
+	x: 10,
+	fn: function() {
+		console.log(this);
+		console.log(this.x);
+	}
+}
+
+obj.fn();
+
+//但这种情况下，如果fn函数被赋值给另一个变量，而没有作为obj的一个属性被调用时，那么this的值就是window.
+var fn1 = obj.fn;
+fn1();
+
+/** 情况3，函数用call或者apply调用,this的值就取传入的对象的值。 
+var obj = {
+	x: 10
+}
+
+var fn = function() {
+	console.log(this);
+	console.log(this.x);
+}
+fn.call(obj);
+
+// 情况4，全局&调用普通函数，this指向window 
+console.log(this === window);
+
+var x = 10;
+var fn = function() {
+	console.log(this);
+	console.log(this.x);
+}
+fn();
+
+//在第二种情况的obj.fn内部再定义函数时，这个新定义的函数是一个普通函数，this仍然指向window。
+var obj = {
+	x: 10,
+	fn: function() {
+		function f() {
+			console.log(this);
+			console.log(this.x);
+		}
+		f();
+	}
+}
+obj.fn(); **/
+
+/** 案例4：执行上下文栈分析案例  
+var a = 10,						//1.进入全局上下文环境
+	fn,
+	bar = function(x) {
+		var b = 5;
+		fn(x+b);				//3. 进入fn函数上下文环境
+	}
+	
+fn = function(y) {
+	var c = 5;
+	console.log(y + c);
+}
+
+bar(10);						//2.进入bar函数上下文环境
+**/
+
+/** 案例5:执行上下文与作用域的结合分析案例 
+var a = 10,
+	d = 20;
+
+function fn(x) {
+	var a = 100,
+		c = 300;
+	function bar(x){
+		var a = 1000,
+			d = 4000;
+		console.log(x);
+	}
+	
+	bar(a);
+	bar(c);
+	console.log(x);
+}
+
+fn(a); **/
+
+/** 案例6：自由变量的取值，要到创建这个函数的那个作用域中取值--是“创建”，而不是“调用”------其实这就是所谓的“静态作用域”。
+var x = 10;
+function fn() {
+	console.log(x);
+}
+
+function show(f) {
+	var x = 20;
+	f();  //是10，而不是20
+}
+show(fn); **/
+
+/** 闭包之函数作为返回值  
+function fn() {
+	var max = 10;
+	return function bar(x) {
+		if(x > max) {
+			console.log(x);
+		}
+	}
+}
+
+var f1 = fn();
+f1(15); **/
+
+/** 案例7：闭包的两种常见使用方式：**/
+// 函数作为返回值
+/**function fn() {
+	var max = 10;
+	return function bar(x) {
+		if(x > max) {
+			console.log(x);
+		}
+	}
+}
+
+var f1 = fn();
+f1(15);**/
+
+// 函数作为参数被传递 
+var max = 10,
+fn = function(x) {
+	if(x > max) {
+		console.log(x);
+	}
+}
+
+function bar(f) {
+	var max = 100;
+	f(15);
+}
+
+bar(fn);
+	
+</script>
+</html>
