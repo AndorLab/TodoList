@@ -8,7 +8,7 @@
 |:--:|:--|:--|
 |1|易海门|（目标）前端架构师|
 |2|吴叶芝||
-|3|王志强|Front end Engineer|
+|3|王志强|Front-end Engineer|
 |4|王海亮||
 |5|景小娟||
 |6|谷中仁||
@@ -37,6 +37,6 @@
 |16|rem|为什么越来越多的网站开始使用rem|[吴叶芝](https://github.com/wuyezhi0613)||否|-|
 |17|indexDB|indexDB的好处和使用|[杜秀秀](https://github.com/dxiuxiu)||否|-|
 |18|TypeScript-基础类型，变量，接口和类||[易海门](https://github.com/xxx)||否|-|
-|19|TypeScript-函数，泛型，枚举和类型推论及兼容性||[待领取](https://github.com/xxx)||否|-|
+|19|TypeScript-函数，泛型，枚举和类型推论及兼容性||[王志强](https://github.com/xxx)||否|-|
 |20|TypeScript-模块，命名空间，模块解析，装饰器||[待领取](https://github.com/xxx)||否|-|
 |20|TypeScript-tsconfig,声明及合并和Mixins||[待领取](https://github.com/xxx)||否|-|
