@@ -36,7 +36,7 @@
 |15|grid|强大灵活的grid布局|安晓妮||否|-|
 |16|rem|为什么越来越多的网站开始使用rem|[吴叶芝](https://github.com/wuyezhi0613)||否|-|
 |17|indexDB|indexDB的好处和使用|[杜秀秀](https://github.com/dxiuxiu)||否|-|
-|18|TypeScript-基础类型，变量，接口和类||[待领取](https://github.com/xxx)||否|-|
+|18|TypeScript-基础类型，变量，接口和类||[易海门](https://github.com/xxx)||否|-|
 |19|TypeScript-函数，泛型，枚举和类型推论及兼容性||[待领取](https://github.com/xxx)||否|-|
 |20|TypeScript-模块，命名空间，模块解析，装饰器||[待领取](https://github.com/xxx)||否|-|
 |20|TypeScript-tsconfig,声明及合并和Mixins||[待领取](https://github.com/xxx)||否|-|
