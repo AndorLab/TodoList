@@ -38,5 +38,5 @@
 |17|indexDB|indexDB的好处和使用|[杜秀秀](https://github.com/dxiuxiu)||否|-|
 |18|TypeScript-基础类型，变量，接口和类||[易海门](https://github.com/xxx)||否|-|
 |19|TypeScript-函数，泛型，枚举和类型推论及兼容性||[王志强](https://github.com/xxx)||否|-|
-|20|TypeScript-模块，命名空间，模块解析，装饰器||[待领取](https://github.com/xxx)||否|-|
+|20|TypeScript-模块，命名空间，模块解析，装饰器||[安晓妮](https://github.com/xxx)||否|-|
 |20|TypeScript-tsconfig,声明及合并和Mixins||[待领取](https://github.com/xxx)||否|-|
