@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>gridDemo</title>
+    <style>
+        .container {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            background: #cecda8;;
+            grid-template-columns: 256px repeat(6, 1fr);
+            grid-template-rows: 64px 85vh 64px;
+            grid-template-areas: 'header header header header header header header ' 
+                                 'aside section section section section section section' 
+                                 'aside footer footer footer footer footer footer';
+        }
+
+        .myHeader {
+            grid-area: header;
+            border-bottom: 1px solid #ccc;
+            background: #fff;
+        }
+
+        .myAside {
+            grid-area: aside;
+            background: #001529;
+            color: #fff;
+        }
+
+        .mySection {
+            grid-area: section;
+            margin: 10px;
+            background: #b1b378;;
+            display: inline-grid;
+            grid-template-rows: 50px 50px 68vh 40px;
+            grid-template-columns: 20px 200px auto 50px;
+        }
+        .breadCrumb{
+            grid-row: 1/2;
+            grid-column:1/4; 
+            background: #fff;
+        }
+        .icon{
+            grid-column: 4/5;
+            grid-row: 1/2;
+        }
+        .btns{
+            background: #fff;
+            grid-column: 1/5;
+            grid-row: 2/3;
+            justify-self: start;
+            align-self: center;
+        }
+        .btns button{
+            width: 70px;
+            height: 34px;
+            border-radius: 5px;
+            background: #fff;
+            color: #001529;
+        }
+        .table{
+            grid-row: 3/4;
+            grid-column: 1/5;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+        .pagination{
+            grid-row: 4/5;
+            grid-column: 1/5;
+            justify-self: end;
+            align-self: center;
+            background: #a7db87;
+        }
+        .pagination button{
+            height: 25px;
+        }
+        .myFooter {
+            grid-area: footer;
+            background: #aedbc3;
+            align-self: center;
+            justify-self: center;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <header class='myHeader'>
+            这是grid属性测试demo的头部
+        </header>
+        <aside class='myAside'>
+            这是菜单栏
+        </aside>
+        <section class='mySection'>
+            <div class='breadCrumb'>假装面包屑</div>
+            <p class='icon'>图标</p>
+            <div class='btns'>
+                    <button class='modify'>修改</button>
+                    <button class='add'>增加</button>
+                    <button class='delete'>删除</button>
+            </div>
+            <div class='table'>
+                    <p>这是表格区域</p>
+            </div>
+            <div class='pagination'>
+                    <button class='prev'>上一页</button>
+                    <button class='btn1'>1</button>
+                    <button class='btn3'>2</button>
+                    <button class='btn3'>3</button>
+                    <button class='next'>下一页</button>
+            </div>
+        </section>
+        <footer class='myFooter'>
+               2018 AndOr Lab 
+        </footer>
+
+    </div>
+
+
+
+</body>
+
+</html>

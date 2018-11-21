@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>flexDemo</title>
+    <style>
+        .header {
+            width: 100%;
+            height: 64px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .container {
+            display: flex;
+            height: 90vh;
+            width: 100%;
+            background: #ccc;
+        }
+
+        .sidebar {
+            width: 256px;
+            height: 100%;
+            background: #001529;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 10px;
+        }
+
+        .contentTop {
+            height: 50px;
+            display: flex;
+            background: #fff;
+        }
+
+        .breadcrumb {
+            width: 95%;
+            background: palegoldenrod;
+        }
+
+        .contentMiddle {
+            height: 50px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background: #d4dbac;
+        }
+
+        .contentMiddle button {
+            width: 60px;
+            height: 32px;
+            background: #fff;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .contentBottom {
+            flex:1;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+        }
+        .table{
+            flex: 1;
+            background: #fff;
+        }
+        .paginationBtns{
+            height: 50px;
+            background: palegoldenrod;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .footer{
+            height: 64px;
+            background: #d4dbac;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='header'>这是flex属性测试demo的头部</div>
+    <div class='container'>
+        <div class='sidebar'></div>
+        <div class='content'>
+            <div class='contentTop'>
+                <div class="breadcrumb">假装面包屑</div>
+                <div class="icon">地图图标</div>
+            </div>
+            <div class='contentMiddle'>
+                <button>增加</button>
+                <button>修改</button>
+                <button>删除</button>
+            </div>
+            <div class='contentBottom'>
+                <div class='table'>这是表格区域</div>
+                <div class='paginationBtns'>
+                    <button class='prev'>上一页</button>
+                    <button class='btn1'>1</button>
+                    <button class='btn3'>2</button>
+                    <button class='btn3'>3</button>
+                    <button class='next'>下一页</button>
+                </div>
+            </div>
+            <div class='footer'>这是底部文字</div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

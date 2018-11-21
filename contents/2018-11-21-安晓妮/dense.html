@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dense</title>
+    <style>
+        .container {
+            display: grid;
+            background: #e2e6e0;
+            grid-template-rows: auto;
+            grid-template-columns: 300px 500px;
+            /*grid-auto-flow: dense;*/
+        }
+        .container div {
+            border: 1px solid #ccc;
+        }
+        .key{
+            grid-column: 1/2;
+        }
+        .value{
+            grid-column: 2/3;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='key'>aaa</div>
+        <div class='key'>bbb</div>
+        <div class='key'>ccc</div>
+        <div class='key'>ddd</div>
+        <div class='value'>AAAAAAAAAAAAAAAA</div>
+        <div class='value'>BBBBBBBBBBBBBBBB</div>
+        <div class='value'>CCCCCCCCCCCCCCCC</div>
+        <div class='value'>DDDDDDDDDDDDDDDD</div>
+    </div>
+</body>
+
+</html>
